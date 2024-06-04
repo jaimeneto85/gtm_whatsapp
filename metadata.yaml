@@ -1,5 +1,5 @@
 homepage: "https://singularidata.com"
 documentation: "https://singularidata.com/utm-whatsapp"
 versions:
-  - sha:
+  - sha: 3b83d85e43330454ddeb4831f08f8ecac3e0afdb
     changeNotes: 1rst version.
