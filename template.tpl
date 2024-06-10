@@ -51,17 +51,17 @@ const readTitle = require('readTitle');
 const injectScript = require('injectScript');
 const getTimestampMillis = require('getTimestampMillis');
 
-// Função para obter o Client ID
+// get the Client ID
 function getClientId(gaMeasurementId, callback, failureCallback) {
   gtag('get', gaMeasurementId, 'client_id', callback);
 }
 
-// Função para atualizar os links do WhatsApp
+// update the WhatsApp links on page
 function updateLinks(clientId, data) {
   injectScript('https://singularidata.com/static/utm_whatsapp.js?clientId='+clientId+"&v="+getTimestampMillis(), data.gtmOnSuccess(), data.gtmOnFailure());
 }
 
-// Verifica se o gtag.js está carregado antes de executar a função
+// Verify if gtag.js is loaded before executing the function
 function checkGtagLoaded(gaMeasurementId, data) {
   getClientId(gaMeasurementId, 
    clientId => updateLinks(clientId, data),
