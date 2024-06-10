@@ -1,5 +1,5 @@
 homepage: "https://singularidata.com"
 documentation: "https://singularidata.com/utm-whatsapp"
 versions:
-  - sha: 8d53278986ebd43995005c7d083ee3f52b65b609
-    changeNotes: 1rst version.
+  - sha: 442b65c60487efa48f7bab992d65214b775b368e
+    changeNotes: fix gtmOnSuccess and gtmOnFailure
