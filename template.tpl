@@ -1,4 +1,4 @@
-___TERMS_OF_SERVICE___
+﻿___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -67,7 +67,7 @@ function checkGtagLoaded(gaMeasurementId, data) {
    clientId => updateLinks(clientId, data),
    () => {
     data.gtmOnFailure();
-    logToConsole('API gtag não disponível')
+    logToConsole('API gtag não disponível');
     }
   );
 }
@@ -247,6 +247,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 6/4/2024, 1:11:14 AM
+Created on 6/10/2024, 5:51:58 PM
 
 
