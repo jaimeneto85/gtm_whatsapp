@@ -58,38 +58,17 @@ function getClientId(gaMeasurementId, callback, failureCallback) {
 
 // Função para atualizar os links do WhatsApp
 function updateLinks(clientId, data) {
-  injectScript('https://singularidata.com/static/utm_whatsapp.js?clientId='+clientId+"&v="+getTimestampMillis());
-  logToConsole('aqui', clientId);
-  
-  const pageTitle = readTitle();
-  const message = "Oi, estou vendo "+pageTitle+" e gostaria de saber mais (ID: #"+clientId+")";
-  const encodedMessage = encodeUriComponent(message);
-  
-  logToConsole('encodedMessage..........', encodedMessage);
-//  const links = callInWindow('document.querySelectorAll', 'a[href*="api.whatsapp.com"], a[href*="wa.me"]');
-  /*
-  logToConsole('links ====>', links);
-  links.forEach(link => {
-    let href = link.getAttribute('href');
-    if (href) {
-      if (href.includes('?')) {
-        href += "&text="+encodedMessage;
-      } else {
-        href += "?text="+encodedMessage;
-      }
-      link.setAttribute('href', href);
-    }
-  });
-  */
-
-  data.gtmOnSuccess();
+  injectScript('https://singularidata.com/static/utm_whatsapp.js?clientId='+clientId+"&v="+getTimestampMillis(), data.gtmOnSuccess(), data.gtmOnFailure());
 }
 
 // Verifica se o gtag.js está carregado antes de executar a função
 function checkGtagLoaded(gaMeasurementId, data) {
   getClientId(gaMeasurementId, 
-   clientId => updateLinks(clientId, data), 
-      () => logToConsole('API gtag não disponível')
+   clientId => updateLinks(clientId, data),
+   () => {
+    data.gtmOnFailure();
+    logToConsole('API gtag não disponível')
+    }
   );
 }
 
