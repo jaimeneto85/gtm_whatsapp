@@ -58,9 +58,9 @@ function getClientId(gaMeasurementId, callback, failureCallback) {
 
 // update the WhatsApp links on page
 function updateLinks(clientId, data) {
-  injectScript('https://singularidata.com/static/utm_whatsapp.js?clientId='+clientId+"&v="+getTimestampMillis(), data.gtmOnSuccess(), data.gtmOnFailure());
+  injectScript('https://singularidata.com/static/utm_whatsapp.js?clientId='+encodeUriComponent(clientId)+"&v="+encodeUriComponent(getTimestampMillis()), data.gtmOnSuccess(), data.gtmOnFailure());
 }
-
+  
 // Verify if gtag.js is loaded before executing the function
 function checkGtagLoaded(gaMeasurementId, data) {
   getClientId(gaMeasurementId, 
